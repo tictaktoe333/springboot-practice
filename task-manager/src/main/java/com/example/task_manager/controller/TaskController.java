@@ -40,7 +40,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) { // TODO: Sort this
         return repo.findById(id)
                 .map(task -> {
                     repo.delete(task);
@@ -48,4 +48,5 @@ public class TaskController {
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
+
 }
